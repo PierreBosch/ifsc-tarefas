@@ -1,0 +1,42 @@
+
+<ion-header>
+
+  <ion-navbar color="darken-green">
+    <ion-title>{{ tarefa.titulo }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding>
+    <ion-grid padding>
+      <ion-list-header no-lines>
+        Atualizar tarefa:
+      </ion-list-header>
+      <ion-item>
+        <ion-label stacked>Título da tarefa</ion-label>
+        <ion-input name="titulo" [(ngModel)]="tarefa.titulo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Matéria</ion-label>
+        <ion-input name="materia" [(ngModel)]="tarefa.materia"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Descrição</ion-label>
+        <ion-textarea name="descricao" [(ngModel)]="tarefa.descricao"></ion-textarea>
+      </ion-item>
+
+      <p>
+        <button (click)="atualizarTarefa()" block icon-left color="darken-green"  ion-button>
+          <ion-icon name="checkmark-circle"></ion-icon>
+          Atualizar
+        </button>
+      </p>
+    </ion-grid>
+  </div>
+
+</ion-content>

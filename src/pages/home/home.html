@@ -1,14 +1,50 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="darken-green">
     <ion-title>
-      Ionic Blank
+      <ion-icon name="school"></ion-icon>
+       &nbsp;To do List
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFiltro()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+  <ion-toolbar color="darken-green">
+    <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()" placeholder="Buscar uma tarefa"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+
+    <div *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </div>
+
+    <ion-list-header no-lines>
+      Minhas tarefas:
+    </ion-list-header>
+
+    <ion-item *ngFor="let t of tarefas" tappable (click)="viewTarefa(t)">
+      <ion-icon [color]="t.concluida ? 'darken-green' : 'danger'" item-start [name]="t.concluida ? 'checkmark-circle' : 'remove-circle'"></ion-icon>
+      {{ t.titulo }}
+      <p>{{ t.materia }}</p>
+      <ion-icon name="ios-arrow-forward" item-end color="darken-green"></ion-icon>
+    </ion-item>
+
+    <ion-item text-center *ngIf="tarefas.length == 0">
+      Nenhuma tarefa encontrada
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" *ngIf="totalRegistros > tarefas.length">
+    <ion-infinite-scroll-content loadingText="Carregando tarefas..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab bottom right>
+    <button color="darken-green" (click)="goToCreateTarefa()" ion-fab icon-only fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

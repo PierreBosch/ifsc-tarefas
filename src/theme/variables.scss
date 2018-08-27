@@ -37,8 +37,11 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
+  lighten-red: #ff383a,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  lighten-green: #20bf6b,
+  darken-green: darken(#20bf6b, 10),
 );
 
 

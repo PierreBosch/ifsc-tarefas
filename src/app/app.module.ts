@@ -6,25 +6,41 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ApiProvider } from '../providers/api/api';
+import { TarefaProvider } from '../providers/tarefa/tarefa';
+import {HttpClientModule} from "@angular/common/http";
+import {VisualizarTarefaPage} from "../pages/visualizar-tarefa/visualizar-tarefa";
+import {CriarTarefaPage} from "../pages/criar-tarefa/criar-tarefa";
+import {EditarTarefaPage} from "../pages/editar-tarefa/editar-tarefa";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    VisualizarTarefaPage,
+    CriarTarefaPage,
+    EditarTarefaPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    VisualizarTarefaPage,
+    CriarTarefaPage,
+    EditarTarefaPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    TarefaProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiProvider,
+    TarefaProvider
   ]
 })
 export class AppModule {}
