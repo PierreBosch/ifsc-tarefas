@@ -21,7 +21,7 @@ export class EditarTarefaPage {
   public atualizarTarefa(){
     this._tarefaProvider.editTarefa(this.tarefa)
       .subscribe((tarefa:Tarefa) => {
-        let loader = this._loadingCtrl.create({content: "Atualizando tarefa...", dismissOnPageChange:true, duration:2000});
+        let loader = this._loadingCtrl.create({content: "Atualizando tarefa...", dismissOnPageChange:true, duration:1000});
 
         loader.present()
           .then(() =>{

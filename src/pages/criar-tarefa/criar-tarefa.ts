@@ -18,7 +18,7 @@ import * as moment from "moment";
 })
 export class CriarTarefaPage {
 
-  public tarefa:Tarefa = {titulo:"", descricao: "", concluida:false, dataCriacao: moment().format(), materia: "" };
+  public tarefa:Tarefa = {titulo:"", descricao: "", concluida:false, dataCriacao: moment().format(), dataAtualizacao: moment().format(), materia: "" };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _loadingCtrl:LoadingController, private _tarefaProvider:TarefaProvider) {
     moment.locale('pt-BR');
@@ -27,7 +27,7 @@ export class CriarTarefaPage {
   public createTarefa(){
     this._tarefaProvider.createTarefa(this.tarefa)
       .subscribe((tarefa:Tarefa) => {
-        let loader = this._loadingCtrl.create({content: "Criando nova tarefa...", dismissOnPageChange:true, duration:2000});
+        let loader = this._loadingCtrl.create({content: "Criando nova tarefa...", dismissOnPageChange:true, duration:1000});
 
         loader.present()
           .then(() =>{

@@ -59,7 +59,7 @@ export class VisualizarTarefaPage {
     this.tarefa.concluida = !this.tarefa.concluida;
     this._tarefaProvider.editTarefa(this.tarefa)
       .subscribe((tarefa:Tarefa) => {
-        this._toastController.create({message:"Status da tarefa alterado", duration: 10000}).present();
+        this._toastController.create({message:"Status da tarefa alterado", duration: 1000}).present();
       });
   }
 
