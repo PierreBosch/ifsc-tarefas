@@ -7,21 +7,3 @@ page-home {
   }
 
 }
-
-.btn-danger{
-  ion-icon{
-    color:map_get($colors,danger) !important;
-  }
-}
-
-.btn-success{
-  ion-icon{
-    color:map_get($colors,darken-green) !important;
-  }
-}
-
-.btn-primary{
-  ion-icon{
-    color:map_get($colors,primary) !important;
-  }
-}

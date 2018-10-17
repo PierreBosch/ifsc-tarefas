@@ -3,15 +3,6 @@
 
   <ion-navbar color="darken-green">
     <ion-title>{{ tarefa.titulo }}</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="editTarefa()">
-        <ion-icon name="create"></ion-icon>
-      </button>
-
-      <button ion-button icon-only (click)="removeTarefa()">
-        <ion-icon name="trash"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -20,14 +11,10 @@
 <ion-content>
 
   <div padding>
-    <ion-item no-lines>
-      <ion-label>Concluída?</ion-label>
-      <ion-toggle color="darken-green" (ionChange)="changeStatus()" [checked]="tarefa.concluida"></ion-toggle>
-    </ion-item>
 
     <ion-card>
       <ion-card-header no-padding color="lighten-green">
-        <ion-item  color="lighten-red">
+        <ion-item color="darken-green">
           <ion-icon item-start name="document"></ion-icon>
           {{ tarefa.titulo }}
         </ion-item>
@@ -37,18 +24,23 @@
           {{ tarefa.descricao }}
         </ion-item>
       </ion-card-content>
-
-      <ion-row>
-          <ion-item text-wrap>
-            <ion-col no-padding>
-              <p>
-                <b>({{ tarefa.materia}})</b>
-                 - criado em: {{ tarefa.dataCriacao | date: "dd/MM/yyy hh:mm" }}
-              </p>
-            </ion-col>
-          </ion-item>
-      </ion-row>
     </ion-card>
+
+    <button block color="darken-green" ion-button icon-only (click)="editarTarefa()">
+      <ion-icon name="create"></ion-icon>
+    </button>
+
+    <button block  color="danger" ion-button icon-only (click)="removerTarefa()">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+
   </div>
+
+  <ion-footer>
+    <ion-item no-lines>
+      <ion-label>Marcar como concluída</ion-label>
+      <ion-toggle color="darken-green" (ionChange)="mudarStatus()" [checked]="tarefa.concluida"></ion-toggle>
+    </ion-item>
+  </ion-footer>
 
 </ion-content>

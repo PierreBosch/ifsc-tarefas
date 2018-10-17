@@ -12,21 +12,16 @@ import {TarefaProvider} from "../../providers/tarefa/tarefa";
 })
 export class EditarTarefaPage {
 
-  tarefa:Tarefa;
+  private tarefa:Tarefa;
 
   constructor(public navCtrl: NavController,private _loadingCtrl:LoadingController, public navParams: NavParams, private _tarefaProvider:TarefaProvider) {
     this.tarefa = this.navParams.data.tarefa;
   }
 
   public atualizarTarefa(){
-    this._tarefaProvider.editTarefa(this.tarefa)
+    this._tarefaProvider.editarTarefa(this.tarefa)
       .subscribe((tarefa:Tarefa) => {
-        let loader = this._loadingCtrl.create({content: "Atualizando tarefa...", dismissOnPageChange:true, duration:1000});
-
-        loader.present()
-          .then(() =>{
-            this.navCtrl.pop();
-          });
+        this.navCtrl.pop();
       });
   }
 

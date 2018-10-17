@@ -6,7 +6,5 @@ export interface Tarefa{
   descricao?:string;
   materia?:string;
   concluida?:boolean;
-  dataCriacao?:string;
-  dataAtualizacao?:string;
 
 }

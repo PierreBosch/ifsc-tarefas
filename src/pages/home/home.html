@@ -4,29 +4,22 @@
       <ion-icon name="school"></ion-icon>
        &nbsp; IFSC - Tarefas
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentFiltro()">
-        <ion-icon name="funnel"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
+
   <ion-toolbar color="darken-green">
-    <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()" placeholder="Buscar uma tarefa"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="tarefaPesquisada" (ionChange)="pesquisarTarefa()"  placeholder="Buscar uma tarefa"></ion-searchbar>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>
   <ion-list>
 
-    <div *ngIf="searching" class="spinner-container">
-      <ion-spinner></ion-spinner>
-    </div>
-
     <ion-list-header no-lines>
       Minhas tarefas:
     </ion-list-header>
 
-    <ion-item *ngFor="let t of tarefas" tappable (click)="viewTarefa(t)">
+    <ion-item *ngFor="let t of tarefas" tappable (click)="visualizarTarefa(t)">
       <ion-icon [color]="t.concluida ? 'darken-green' : 'danger'" item-start [name]="t.concluida ? 'checkmark-circle' : 'remove-circle'"></ion-icon>
       {{ t.titulo }}
       <p>{{ t.materia }}</p>
@@ -38,12 +31,8 @@
     </ion-item>
   </ion-list>
 
-  <ion-infinite-scroll (ionInfinite)="loadMore($event)" *ngIf="totalRegistros > tarefas.length">
-    <ion-infinite-scroll-content loadingText="Carregando tarefas..."></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-
   <ion-fab bottom right>
-    <button color="darken-green" (click)="goToCreateTarefa()" ion-fab icon-only fab>
+    <button color="darken-green" (click)="irParaCriarTarefa()" ion-fab icon-only>
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
